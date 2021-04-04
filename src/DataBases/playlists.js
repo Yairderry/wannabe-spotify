@@ -1,4 +1,4 @@
-export default [
+const playlists = [
   {
     name: "Rap God",
     created_at: new Date("2021-01-01"),
@@ -65,3 +65,5 @@ export default [
     ],
   },
 ];
+
+export default playlists;

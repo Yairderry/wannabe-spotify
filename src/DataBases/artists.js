@@ -1,4 +1,4 @@
-export default [
+const artists = [
   {
     name: "Eminem",
     cover_img: "eminem.png",
@@ -30,3 +30,5 @@ export default [
     songs: ["UAWcs5H-qgQ", "FOjdXSrtUxA", "JGwWNGJdvx8"],
   },
 ];
+
+export default artists;

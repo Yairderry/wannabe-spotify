@@ -1,4 +1,4 @@
-export default [
+const albums = [
   {
     id: "sdw2ed3",
     name: "The Marshall Mathers",
@@ -70,3 +70,5 @@ export default [
     songs: ["JGwWNGJdvx8", "K0ibBPhiaG0", "87gWaABqGYs"],
   },
 ];
+
+export default albums;
