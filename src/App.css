@@ -8,10 +8,56 @@
 
 .top-five-pick {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .pick-img {
   max-width: 100px;
   border-radius: 50%;
+}
+
+/*__________________playlists*/
+.playlists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.playlist-title {
+  font-size: 80px;
+}
+
+.playlist-img {
+  max-width: 250px;
+  border-radius: 50%;
+}
+.playlist-songs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlist-song {
+  display: flex;
+  width: 90%;
+  justify-content: stretch;
+  align-items: center;
+  padding: 20px;
+  margin: 2px;
+  border: solid black 1px;
+}
+
+.playlist-song-img {
+  max-width: 50px;
+  border-radius: 50%;
+}
+
+.song-name {
+  flex: 3;
+}
+
+.song-artist {
+  flex: 2;
 }

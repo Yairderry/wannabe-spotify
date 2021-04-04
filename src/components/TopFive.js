@@ -5,8 +5,8 @@ export default function TopFive({ type, list }) {
     <div className="top-five">
       <h2>Top 5 {type}</h2>
       <div className="top-five-pick">
-        {list.map((pick) => (
-          <PickWidget src={pick.cover_img} name={pick.name} />
+        {list.map((pick, i) => (
+          <PickWidget key={i} src={pick.cover_img} name={pick.name} />
         ))}
       </div>
     </div>

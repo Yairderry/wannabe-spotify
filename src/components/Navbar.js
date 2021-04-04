@@ -1,11 +1,12 @@
 import React from "react";
 
 import Home from "./Home.js";
-import Playlists from "./Playlists.js";
+import Playlists from "./Playlists/Playlists.js";
 import Albums from "./Albums.js";
 import Artists from "./Artists.js";
 import NotFound from "./NotFound.js";
 import Songs from "./Songs.js";
+import Playlist from "./Playlists/Playlist";
 
 import albums from "../DataBases/albums";
 import artists from "../DataBases/artists";
@@ -47,6 +48,7 @@ export default function Navbar() {
             Playlists
           </NavLink>
         </nav>
+
         <Switch>
           <Route exact path="/">
             <Home
@@ -67,6 +69,9 @@ export default function Navbar() {
           </Route>
           <Route exact path="/artists">
             <Artists collection={artists} />
+          </Route>
+          <Route path="/playlist/:id">
+            <Playlist collection={playlists} songs={songsWithImages} />
           </Route>
           <Route path="/404" component={NotFound} />
         </Switch>
