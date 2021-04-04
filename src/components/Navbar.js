@@ -7,12 +7,23 @@ import Artists from "./Artists.js";
 import NotFound from "./NotFound.js";
 import Songs from "./Songs.js";
 
-import songs from "../DataBases/songs";
 import albums from "../DataBases/albums";
 import artists from "../DataBases/artists";
 import playlists from "../DataBases/playlists";
+import songs from "../DataBases/songs";
 
 import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
+
+const songsWithImages = songs.map((song) => {
+  const { cover_img } = albums.find((album) => album.name === song.album);
+  song.cover_img = cover_img;
+  return song;
+});
+
+const topFiveSongs = songsWithImages.slice(0, 5);
+const topFiveAlbums = albums.slice(0, 5);
+const topFivePlaylists = playlists.slice(0, 5);
+const topFiveArtists = artists.slice(0, 5);
 
 export default function Navbar() {
   return (
@@ -37,11 +48,26 @@ export default function Navbar() {
           </NavLink>
         </nav>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/songs" component={Songs} />
-          <Route exact path="/playlists" component={Playlists} />
-          <Route exact path="/albums" component={Albums} />
-          <Route exact path="/artists" component={Artists} />
+          <Route exact path="/">
+            <Home
+              songs={topFiveSongs}
+              playlists={topFivePlaylists}
+              artists={topFiveArtists}
+              albums={topFiveAlbums}
+            />
+          </Route>
+          <Route exact path="/songs">
+            <Songs collection={songsWithImages} />
+          </Route>
+          <Route exact path="/playlists">
+            <Playlists collection={playlists} />
+          </Route>
+          <Route exact path="/albums">
+            <Albums collection={albums} />
+          </Route>
+          <Route exact path="/artists">
+            <Artists collection={artists} />
+          </Route>
           <Route path="/404" component={NotFound} />
         </Switch>
       </BrowserRouter>

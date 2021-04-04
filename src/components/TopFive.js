@@ -1,10 +1,14 @@
 import React from "react";
 import PickWidget from "./PickWidget";
-export default function TopFive({ type }) {
+export default function TopFive({ type, list }) {
   return (
     <div className="top-five">
       <h2>Top 5 {type}</h2>
-      <PickWidget />
+      <div className="top-five-pick">
+        {list.map((pick) => (
+          <PickWidget src={pick.cover_img} name={pick.name} />
+        ))}
+      </div>
     </div>
   );
 }

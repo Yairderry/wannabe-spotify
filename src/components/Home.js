@@ -1,14 +1,13 @@
 import React from "react";
 import TopFive from "./TopFive";
-import Playlists from "./Playlists.js";
-import Albums from "./Albums.js";
-import Artists from "./Artists.js";
-import Songs from "./Songs.js";
 
-export default function Home() {
+export default function Home({ songs, playlists, artists, albums }) {
   return (
     <div>
-      <TopFive />
+      <TopFive type="Songs" list={songs} />
+      <TopFive type="Artists" list={artists} />
+      <TopFive type="Albums" list={albums} />
+      <TopFive type="Playlists" list={playlists} />
     </div>
   );
 }
