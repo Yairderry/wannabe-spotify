@@ -17,11 +17,19 @@
   border-radius: 50%;
 }
 
-/*__________________playlists*/
+/*__________________playlists__________________*/
 .playlists {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.playlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20vw;
+  margin: 3vw;
 }
 
 .playlist-title {
@@ -47,6 +55,21 @@
   padding: 20px;
   margin: 2px;
   border: solid black 1px;
+}
+
+.playlist-data {
+  min-width: 300px;
+}
+
+.playlist-details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.playlist-song:hover {
+  background-color: rgb(211, 211, 211);
+  transition: 0.5s;
 }
 
 .playlist-song-img {
