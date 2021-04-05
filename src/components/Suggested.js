@@ -1,19 +1,26 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-export default function Suggested({ collection, suggested }) {
+export default function Suggested({ collection, suggested, query }) {
   const songs = suggested
     ? collection.filter((song) => suggested.songs.includes(song.id))
     : collection;
+
   return (
-    <div>
+    <div className="suggested">
+      <h3>Suggested</h3>
       {songs.map((song) => {
         return (
-          <div key={song.id}>
-            <img src={song.cover_img} />
-            <h4>{song.name}</h4>
-            <span>{song.artist}</span>
-            <span>{song.length}</span>
-          </div>
+          <NavLink
+            className="playlist-song"
+            to={`/song/${song.id}${query}`}
+            key={song.id}
+          >
+            <img className="playlist-song-img" src={song.cover_img} />
+            <h4 className="song-name">{song.name}</h4>
+            <span className="song-artist">{song.artist}</span>
+            <span className="song-length">{song.length}</span>
+          </NavLink>
         );
       })}
     </div>

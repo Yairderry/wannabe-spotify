@@ -29,10 +29,6 @@ export default function PlaylistHeader({ playlist }) {
           )}
           <span>Number of Songs: {playlist.songs.length}</span>
         </div>
-        <div>
-          <button>play</button>
-          <button>shuffle</button>
-        </div>
       </div>
     </div>
   );

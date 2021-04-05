@@ -33,21 +33,45 @@ export default function Navbar() {
   return (
     <>
       <BrowserRouter>
-        <nav>
-          <span>Wannabe Spotify</span>
-          <NavLink activeStyle={{ color: "green" }} exact to="/">
-            Home
+        <nav className="main-nav">
+          <NavLink
+            className="sub-nav"
+            activeStyle={{ backgroundColor: "green", color: "white" }}
+            exact
+            to="/"
+          >
+            Wannabe Spotify
           </NavLink>
-          <NavLink activeStyle={{ color: "green" }} exact to="/songs">
+          <NavLink
+            className="sub-nav"
+            activeStyle={{ backgroundColor: "green", color: "white" }}
+            exact
+            to="/songs"
+          >
             Songs
           </NavLink>
-          <NavLink activeStyle={{ color: "green" }} exact to="/albums">
+          <NavLink
+            className="sub-nav"
+            activeStyle={{ backgroundColor: "green", color: "white" }}
+            exact
+            to="/albums"
+          >
             Albums
           </NavLink>
-          <NavLink activeStyle={{ color: "green" }} exact to="/artists">
+          <NavLink
+            className="sub-nav"
+            activeStyle={{ backgroundColor: "green", color: "white" }}
+            exact
+            to="/artists"
+          >
             Artists
           </NavLink>
-          <NavLink activeStyle={{ color: "green" }} exact to="/playlists">
+          <NavLink
+            className="sub-nav"
+            activeStyle={{ backgroundColor: "green", color: "white" }}
+            exact
+            to="/playlists"
+          >
             Playlists
           </NavLink>
         </nav>
