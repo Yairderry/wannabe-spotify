@@ -7,6 +7,7 @@ import Artists from "./Artists.js";
 import NotFound from "./NotFound.js";
 import Songs from "./Songs.js";
 import Playlist from "./Playlists/Playlist";
+import Song from "./Song";
 
 import albums from "../DataBases/albums";
 import artists from "../DataBases/artists";
@@ -21,7 +22,9 @@ const songsWithImages = songs.map((song) => {
   return song;
 });
 
-const topFiveSongs = songsWithImages.slice(0, 5);
+const topFiveSongs = songsWithImages
+  .sort((a, b) => b.views - a.views)
+  .slice(0, 5);
 const topFiveAlbums = albums.slice(0, 5);
 const topFivePlaylists = playlists.slice(0, 5);
 const topFiveArtists = artists.slice(0, 5);
@@ -71,16 +74,33 @@ export default function Navbar() {
             <Artists collection={artists} />
           </Route>
           <Route path="/playlist/:id">
-            <Playlist collection={playlists} songs={songsWithImages} />
+            <Playlist
+              collection={playlists}
+              songs={songsWithImages}
+              type="playlist"
+            />
           </Route>
           <Route path="/album/:id">
-            <Playlist collection={albums} songs={songsWithImages} />
+            <Playlist
+              collection={albums}
+              songs={songsWithImages}
+              type="album"
+            />
           </Route>
           <Route path="/artist/:id">
             <Playlist
               collection={artists}
               songs={songsWithImages}
               albums={albums}
+              type="artist"
+            />
+          </Route>
+          <Route path="/song/:id">
+            <Song
+              collection={songsWithImages}
+              albums={albums}
+              playlists={playlists}
+              artists={artists}
             />
           </Route>
           <Route path="/404" component={NotFound} />

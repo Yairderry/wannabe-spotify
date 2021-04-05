@@ -4,7 +4,7 @@ import PlaylistHeader from "./PlaylistHeader";
 import PlaylistContent from "./PlaylistContent";
 import PlaylistAlbum from "./PlaylistAlbum";
 
-export default function Playlist({ collection, songs, albums }) {
+export default function Playlist({ collection, songs, albums, type }) {
   const { id } = useParams();
   const playlist = collection.find((playlist) => playlist.id === id);
   const playlistSongs = songs.filter((song) =>
@@ -19,7 +19,12 @@ export default function Playlist({ collection, songs, albums }) {
     <div className="playlist">
       <PlaylistHeader playlist={playlist} />
       {playlist.album && <PlaylistAlbum />}
-      <PlaylistContent albums={playlistAlbums} songs={playlistSongs} />
+      <PlaylistContent
+        albums={playlistAlbums}
+        songs={playlistSongs}
+        type={type}
+        playlistId={id}
+      />
     </div>
   );
 }
