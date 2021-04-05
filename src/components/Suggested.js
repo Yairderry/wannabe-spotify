@@ -1,7 +1,9 @@
 import React from "react";
 
 export default function Suggested({ collection, suggested }) {
-  const songs = collection.filter((song) => suggested.songs.includes(song.id));
+  const songs = suggested
+    ? collection.filter((song) => suggested.songs.includes(song.id))
+    : collection;
   return (
     <div>
       {songs.map((song) => {
