@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ({ song }) {
+export default function PlaylistAlbum({ song }) {
   return (
     <div className="playlist-song">
       <img className="playlist-song-img" src={song.cover_img} alt={song.name} />

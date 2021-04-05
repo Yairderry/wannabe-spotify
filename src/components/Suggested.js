@@ -16,7 +16,11 @@ export default function Suggested({ collection, suggested, query }) {
             to={`/song/${song.id}${query}`}
             key={song.id}
           >
-            <img className="playlist-song-img" src={song.cover_img} />
+            <img
+              className="playlist-song-img"
+              src={song.cover_img}
+              alt={song.name}
+            />
             <h4 className="song-name">{song.name}</h4>
             <span className="song-artist">{song.artist}</span>
             <span className="song-length">{song.length}</span>

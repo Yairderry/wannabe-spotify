@@ -26,12 +26,16 @@ export default function Song({ collection, artists, playlists, albums }) {
       <div className="song-div">
         <h1>{song.name}</h1>
         <YouTube className="youtube-link" videoId={song.id} />
+        <Suggested
+          collection={collection}
+          suggested={suggested}
+          query={query}
+        />
       </div>
       <div className="lyrics">
         <h3>Lyrics</h3>
         <span>{song.lyrics}</span>
       </div>
-      <Suggested collection={collection} suggested={suggested} query={query} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function TopFive({ type, list }) {
   return (
     <div className="top-five">
-      <Link exact to={`/${type.toLowerCase()}s`}>
+      <Link className="top-five-title" to={`/${type.toLowerCase()}s`}>
         Top 5 {type}s
       </Link>
       <div className="top-five-pick">

@@ -1,15 +1,43 @@
+:root {
+  --main-green: rgb(0, 121, 50);
+  --nav-color: rgb(184, 182, 182);
+  --option-color: rgb(121, 173, 143);
+}
+
 .App {
   text-align: center;
 }
 
+.home-title {
+  font-size: 50px;
+  font-weight: 800;
+  color: var(--main-green);
+  text-shadow: 2px 5px black;
+}
+
 .top-five {
-  background-color: rgb(75, 82, 82);
+  background-color: var(--option-color);
+  margin: 20px 10px 0px 10px;
+  border: solid var(--main-green) 2px;
+  border-radius: 10rem;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.top-five .top-five-title {
+  font-size: 30px;
 }
 
 .top-five-pick {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.pick {
+  max-width: 20%;
+  width: fit-content;
 }
 
 .pick-img {
@@ -19,20 +47,22 @@
 
 /*__________________nav________________________*/
 .main-nav {
-  background-color: rgb(184, 182, 182);
+  background-color: var(--nav-color);
   height: fit-content;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  box-shadow: 0px 4px var(--main-green);
 }
 
 .sub-nav {
   padding: 13px;
-  color: rgb(0, 121, 50);
+  color: var(--main-green);
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
+  transition: 0.5s;
 }
 
 /*__________________playlists__________________*/
@@ -71,8 +101,10 @@
   justify-content: stretch;
   align-items: center;
   padding: 20px;
-  margin: 2px;
+  margin: 10px;
   border: solid black 1px;
+  border-radius: 5rem;
+  background-color: var(--option-color);
   text-decoration: none;
   color: black;
 }
@@ -115,19 +147,48 @@
 }
 
 .youtube-link {
-  width: 33vw;
-  height: 33vw;
+  width: 50vw;
+  height: 50vw;
+  max-height: 80vh;
 }
 
 .suggested,
 .lyrics {
-  width: 33vw;
-  height: 95vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: 50vw;
   white-space: pre-wrap;
 }
 
 .song-div {
   padding: 20px;
+}
+
+.loader {
+  display: fixed;
+  left: 45%;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
