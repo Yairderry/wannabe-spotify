@@ -19,18 +19,27 @@ export default function Song({ collection, artists, playlists, albums }) {
     : [artist, artists, "artist"];
 
   const suggested = list.find((song) => song.id === paramId);
+
+  const songs = suggested
+    ? collection.filter((song) => suggested.songs.includes(song.id))
+    : collection;
+
   const song = collection.find((song) => song.id === id);
   const query = paramId ? `?${type}=${paramId}` : "";
   return (
     <div className="song">
       <div className="song-div">
         <h1>{song.name}</h1>
-        <YouTube className="youtube-link" videoId={song.id} />
-        <Suggested
-          collection={collection}
-          suggested={suggested}
-          query={query}
+        <YouTube
+          className="youtube-link"
+          videoId={song.id}
+          opts={{
+            playerVars: {
+              autoplay: 1,
+            },
+          }}
         />
+        <Suggested collection={songs} query={query} />
       </div>
       <div className="lyrics">
         <h3>Lyrics</h3>

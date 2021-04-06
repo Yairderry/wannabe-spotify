@@ -21,6 +21,7 @@ const NotFound = lazy(() => import("./NotFound.js"));
 const Songs = lazy(() => import("./Songs.js"));
 const Playlist = lazy(() => import("./Playlists/Playlist"));
 const Song = lazy(() => import("./Song"));
+const ErrorBoundary = lazy(() => import("./ErrorBoundary"));
 
 const songsWithImages = songs.map((song) => {
   const { cover_img } = albums.find((album) => album.name === song.album);
@@ -83,64 +84,66 @@ export default function Navbar() {
           </NavLink>
         </nav>
 
-        <Suspense fallback={<div class="loader"></div>}>
-          <Switch>
-            <Route exact path="/">
-              <Home
-                songs={topFiveSongs}
-                playlists={topFivePlaylists}
-                artists={topFiveArtists}
-                albums={topFiveAlbums}
-              />
-            </Route>
-            <Route exact path="/songs">
-              <Songs collection={songsWithImages} />
-            </Route>
-            <Route exact path="/playlists">
-              <Playlists collection={playlists} />
-            </Route>
-            <Route exact path="/albums">
-              <Albums collection={albums} />
-            </Route>
-            <Route exact path="/artists">
-              <Artists collection={artists} />
-            </Route>
-            <Route path="/playlist/:id">
-              <Playlist
-                collection={playlists}
-                songs={songsWithImages}
-                type="playlist"
-              />
-            </Route>
-            <Route path="/album/:id">
-              <Playlist
-                collection={albums}
-                songs={songsWithImages}
-                type="album"
-              />
-            </Route>
-            <Route path="/artist/:id">
-              <Playlist
-                collection={artists}
-                songs={songsWithImages}
-                albums={albums}
-                type="artist"
-              />
-            </Route>
-            <Route path="/song/:id">
-              <Song
-                collection={songsWithImages}
-                albums={albums}
-                playlists={playlists}
-                artists={artists}
-              />
-            </Route>
-            <Route path="/404" component={NotFound} />
+        <Suspense fallback={<div className="loader"></div>}>
+          <ErrorBoundary>
+            <Switch>
+              <Route exact path="/">
+                <Home
+                  songs={topFiveSongs}
+                  playlists={topFivePlaylists}
+                  artists={topFiveArtists}
+                  albums={topFiveAlbums}
+                />
+              </Route>
+              <Route exact path="/songs">
+                <Songs collection={songsWithImages} />
+              </Route>
+              <Route exact path="/playlists">
+                <Playlists collection={playlists} />
+              </Route>
+              <Route exact path="/albums">
+                <Albums collection={albums} />
+              </Route>
+              <Route exact path="/artists">
+                <Artists collection={artists} />
+              </Route>
+              <Route exact path="/playlist/:id">
+                <Playlist
+                  collection={playlists}
+                  songs={songsWithImages}
+                  type="playlist"
+                />
+              </Route>
+              <Route exact path="/album/:id">
+                <Playlist
+                  collection={albums}
+                  songs={songsWithImages}
+                  type="album"
+                />
+              </Route>
+              <Route exact path="/artist/:id">
+                <Playlist
+                  collection={artists}
+                  songs={songsWithImages}
+                  albums={albums}
+                  type="artist"
+                />
+              </Route>
+              <Route exact path="/song/:id">
+                <Song
+                  collection={songsWithImages}
+                  albums={albums}
+                  playlists={playlists}
+                  artists={artists}
+                />
+              </Route>
+              <Route path="/404" component={NotFound} />
 
-            <Route>
-              <Redirect to="/404"></Redirect>
-            </Route>
-          </Switch>
+              <Route>
+                <Redirect to="/404"></Redirect>
+              </Route>
+            </Switch>
+          </ErrorBoundary>
         </Suspense>
       </BrowserRouter>
     </>
