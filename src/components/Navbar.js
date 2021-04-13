@@ -85,65 +85,81 @@ export default function Navbar() {
         </nav>
 
         <Suspense fallback={<div className="loader"></div>}>
-          <ErrorBoundary>
-            <Switch>
-              <Route exact path="/">
+          <Switch>
+            <Route exact path="/">
+              <ErrorBoundary>
                 <Home
                   songs={topFiveSongs}
                   playlists={topFivePlaylists}
                   artists={topFiveArtists}
                   albums={topFiveAlbums}
                 />
-              </Route>
-              <Route exact path="/songs">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/songs">
+              <ErrorBoundary>
                 <Songs collection={songsWithImages} />
-              </Route>
-              <Route exact path="/playlists">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/playlists">
+              <ErrorBoundary>
                 <Playlists collection={playlists} />
-              </Route>
-              <Route exact path="/albums">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/albums">
+              <ErrorBoundary>
                 <Albums collection={albums} />
-              </Route>
-              <Route exact path="/artists">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/artists">
+              <ErrorBoundary>
                 <Artists collection={artists} />
-              </Route>
-              <Route exact path="/playlist/:id">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/playlist/:id">
+              <ErrorBoundary>
                 <Playlist
                   collection={playlists}
                   songs={songsWithImages}
                   type="playlist"
                 />
-              </Route>
-              <Route exact path="/album/:id">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/album/:id">
+              <ErrorBoundary>
                 <Playlist
                   collection={albums}
                   songs={songsWithImages}
                   type="album"
                 />
-              </Route>
-              <Route exact path="/artist/:id">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/artist/:id">
+              <ErrorBoundary>
                 <Playlist
                   collection={artists}
                   songs={songsWithImages}
                   albums={albums}
                   type="artist"
                 />
-              </Route>
-              <Route exact path="/song/:id">
+              </ErrorBoundary>
+            </Route>
+            <Route exact path="/song/:id">
+              <ErrorBoundary>
                 <Song
                   collection={songsWithImages}
                   albums={albums}
                   playlists={playlists}
                   artists={artists}
                 />
-              </Route>
-              <Route path="/404" component={NotFound} />
+              </ErrorBoundary>
+            </Route>
+            <Route path="/404" component={NotFound} />
 
-              <Route>
-                <Redirect to="/404"></Redirect>
-              </Route>
-            </Switch>
-          </ErrorBoundary>
+            <Route>
+              <Redirect to="/404"></Redirect>
+            </Route>
+          </Switch>
         </Suspense>
       </BrowserRouter>
     </>
